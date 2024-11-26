@@ -18,7 +18,7 @@ public class Member {
     private String id;
 
     @Column(name = "NAME")
-    private String name;
+    private String username;
 
     private Integer age;
 
