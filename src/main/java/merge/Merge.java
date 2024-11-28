@@ -1,6 +1,6 @@
-package logic;
+package merge;
 
-import entity.Member;
+import basic.entity.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -52,6 +52,9 @@ public class Merge {
 
         // 영속 상태
         System.out.println("mergeMember = " + mergeMember.getUsername());
+
+        // 동일성 비교
+        System.out.println("member == mergeMember: " + (member == mergeMember));
 
         System.out.println("em2 contains member = " + em2.contains(member));
         System.out.println("em2 contains mergeMember = " + em2.contains(mergeMember));

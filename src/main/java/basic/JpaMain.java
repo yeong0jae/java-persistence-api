@@ -1,6 +1,6 @@
-package logic;
+package basic;
 
-import entity.Member;
+import basic.entity.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
