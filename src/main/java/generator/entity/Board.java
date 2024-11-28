@@ -1,4 +1,4 @@
-package mapping.entity;
+package generator.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,5 +19,5 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.TABLE,
             generator = "BOARD_SEQ_GENERATOR")
     private Long id;
-    
+
 }

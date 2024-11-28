@@ -1,12 +1,12 @@
-package mapping;
+package generator;
 
+import generator.entity.Board;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import mapping.entity.Board;
 
-public class Mapping {
+public class Generator {
 
     public static void main(String[] args) {
 
@@ -21,7 +21,7 @@ public class Mapping {
         tx.commit();
 
         em.close();
-        
+
         emf.close();
     }
 
