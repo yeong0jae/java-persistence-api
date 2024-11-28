@@ -1,9 +1,11 @@
 package logic;
 
+import entity.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
 
@@ -28,6 +30,23 @@ public class JpaMain {
     }
 
     private static void logic(EntityManager em) {
-        
+
+        String id = "id1";
+        Member member = new Member();
+        member.setId(id);
+        member.setUsername("영재");
+        member.setAge(25);
+
+        em.persist(member);
+
+        member.setAge(20);
+
+        Member findMember = em.find(Member.class, id);
+        System.out.println("findMember = " + findMember.getUsername() + ", age=" + findMember.getAge());
+
+        List<Member> members = em.createQuery("select m from Member m", Member.class).getResultList();
+        System.out.println("members.size = " + members.size());
+
+        em.remove(member);
     }
 }
