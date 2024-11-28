@@ -1,10 +1,10 @@
 package merge;
 
-import basic.entity.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import merge.entity.Member;
 
 public class Merge {
 
