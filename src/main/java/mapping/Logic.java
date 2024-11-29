@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import java.util.List;
 import mapping.entity.Member;
 import mapping.entity.Team;
 
@@ -16,6 +17,7 @@ public class Logic {
 
         tx.begin();
         save(em);
+        deleteRelation(em);
         tx.commit();
 
         em.close();
@@ -35,6 +37,42 @@ public class Logic {
         Member member2 = new Member("member2", "회원2");
         member2.setTeam(team1); // 연관관계 설정 member2 -> team1
         em.persist(member2);
+    }
+
+    private static void findObjectGraph(EntityManager em) {
+        Member member = em.find(Member.class, "member1");
+        Team team = member.getTeam(); // 객체 그래프 탐색
+        System.out.println("팀 이름 = " + team.getName());
+    }
+
+    private static void queryLogicJoin(EntityManager em) {
+
+        String jpql = "select m from Member m join m.team t where t.name=:teamName";
+
+        List<Member> resultList = em.createQuery(jpql, Member.class)
+                .setParameter("teamName", "팀1")
+                .getResultList();
+
+        for (Member member : resultList) {
+            System.out.println("[query] member.username = " + member.getUsername());
+        }
+    }
+
+    private static void updateRelation(EntityManager em) {
+
+        Team team2 = new Team("team2", "팀2");
+        em.persist(team2);
+
+        Member member = em.find(Member.class, "member1");
+        member.setTeam(team2); // 연관관계 수정 member1 -> team2
+
+    }
+
+    private static void deleteRelation(EntityManager em) {
+
+        Member member1 = em.find(Member.class, "member1");
+        member1.setTeam(null); // 연관관계 제거 member1 -> team1
+
     }
 
 
