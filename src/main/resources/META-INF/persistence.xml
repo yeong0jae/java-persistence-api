@@ -1,7 +1,7 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
     <persistence-unit name="jpa-study">
-        <class>mapping.entity.Member</class>
-        <class>mapping.entity.Team</class>
+        <class>uni.entity.Member</class>
+        <class>uni.entity.Team</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
