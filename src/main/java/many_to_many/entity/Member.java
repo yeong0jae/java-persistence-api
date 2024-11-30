@@ -27,5 +27,9 @@ public class Member {
             joinColumns = @JoinColumn(name = "MEMBER_ID"),
             inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID"))
     private List<Product> products = new ArrayList<>();
-    
+
+    public void addProduct(Product product) {
+        this.products.add(product);
+        product.getMembers().add(this);
+    }
 }

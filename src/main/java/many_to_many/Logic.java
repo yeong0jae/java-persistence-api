@@ -17,7 +17,7 @@ public class Logic {
 
         tx.begin();
         save(em);
-        find(em);
+        findInverse(em);
         tx.commit();
 
         em.close();
@@ -34,7 +34,8 @@ public class Logic {
         Member member1 = new Member();
         member1.setId("member1");
         member1.setUsername("회원1");
-        member1.getProducts().add(productA); // 회원1이 상품A 구매 (연관관계 설정)
+//        member1.getProducts().add(productA); // 회원1이 상품A 구매 (연관관계 설정)
+        member1.addProduct(productA); // 회원1이 상품A 구매 (양방향 연관관계 설정)
         em.persist(member1);
 
     }
@@ -44,6 +45,14 @@ public class Logic {
         List<Product> products = member.getProducts(); // 객체 그래프 탐색
         for (Product product : products) {
             System.out.println("product.name = " + product.getName());
+        }
+    }
+
+    private static void findInverse(EntityManager em) {
+        Product product = em.find(Product.class, "productA");
+        List<Member> members = product.getMembers(); // 객체 그래프 탐색
+        for (Member member : members) {
+            System.out.println("member.username = " + member.getUsername());
         }
     }
 }
