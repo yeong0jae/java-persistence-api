@@ -1,7 +1,8 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
     <persistence-unit name="jpa-study">
-        <class>many_to_many.entity.Member</class>
-        <class>many_to_many.entity.Product</class>
+        <class>mtm_jointable.entity.Member</class>
+        <class>mtm_jointable.entity.Product</class>
+        <class>mtm_jointable.entity.MemberProduct</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
