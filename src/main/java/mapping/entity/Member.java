@@ -1,4 +1,4 @@
-package uni.entity;
+package mapping.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,6 +21,7 @@ public class Member {
 
     private String username;
 
+    @Setter
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
     private Team team;
@@ -30,4 +31,11 @@ public class Member {
         this.username = username;
     }
 
+    public void setTeam(Team team) {
+        if (this.team != null) {
+            this.team.getMembers().remove(this);
+        }
+        this.team = team;
+        team.getMembers().add(this);
+    }
 }

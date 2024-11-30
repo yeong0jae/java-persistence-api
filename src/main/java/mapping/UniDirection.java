@@ -1,14 +1,14 @@
-package uni;
+package mapping;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import java.util.List;
-import uni.entity.Member;
-import uni.entity.Team;
+import mapping.entity.Member;
+import mapping.entity.Team;
 
-public class Logic {
+public class UniDirection {
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-study");
