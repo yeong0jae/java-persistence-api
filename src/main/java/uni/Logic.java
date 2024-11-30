@@ -1,12 +1,12 @@
-package mapping;
+package uni;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import java.util.List;
-import mapping.entity.Member;
-import mapping.entity.Team;
+import uni.entity.Member;
+import uni.entity.Team;
 
 public class Logic {
 
@@ -17,7 +17,7 @@ public class Logic {
 
         tx.begin();
         save(em);
-        deleteRelation(em);
+        biDirection(em);
         tx.commit();
 
         em.close();
@@ -37,6 +37,9 @@ public class Logic {
         Member member2 = new Member("member2", "회원2");
         member2.setTeam(team1); // 연관관계 설정 member2 -> team1
         em.persist(member2);
+
+        team1.getMembers().add(member1); // 양방향 연관관계 설정 (일대다 단방향 추가)
+        team1.getMembers().add(member2);
     }
 
     private static void findObjectGraph(EntityManager em) {
@@ -75,5 +78,14 @@ public class Logic {
 
     }
 
+    private static void biDirection(EntityManager em) {
+
+        Team team = em.find(Team.class, "team1");
+        List<Member> members = team.getMembers();
+
+        for (Member member : members) {
+            System.out.println("member.username = " + member.getUsername());
+        }
+    }
 
 }
