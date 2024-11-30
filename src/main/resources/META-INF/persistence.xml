@@ -1,8 +1,8 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
     <persistence-unit name="jpa-study">
-        <class>mtm_jointable.entity.Member</class>
-        <class>mtm_jointable.entity.Product</class>
-        <class>mtm_jointable.entity.MemberProduct</class>
+        <class>join_table_surrogate.entity.Product</class>
+        <class>join_table_surrogate.entity.Member</class>
+        <class>join_table_surrogate.entity.Order</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>

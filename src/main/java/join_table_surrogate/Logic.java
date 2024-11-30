@@ -17,7 +17,7 @@ public class Logic {
 
         tx.begin();
         save(em);
-        find(em);
+        
         tx.commit();
 
         em.close();
