@@ -21,7 +21,6 @@ public class Member {
 
     private String username;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
     private Team team;
