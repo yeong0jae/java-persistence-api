@@ -1,4 +1,4 @@
-package oneToOne.entity;
+package one_to_one.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,5 +18,5 @@ public class Locker {
 
     @OneToOne(mappedBy = "locker")
     private Member member;
-    
+
 }

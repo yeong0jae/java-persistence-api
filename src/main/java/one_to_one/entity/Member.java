@@ -1,4 +1,4 @@
-package oneToOne.entity;
+package one_to_one.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,5 +24,5 @@ public class Member {
     @OneToOne
     @JoinColumn(name = "LOCKER_ID")
     private Locker locker;
-    
+
 }
